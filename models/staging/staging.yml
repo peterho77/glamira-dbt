@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: checkout_success_stg
+    description: "Bảng lưu trữ thông tin các đơn hàng checkout thành công"
+    columns:
+      - name: order_id # Thay bằng tên cột khóa chính thực tế của bảng này (ví dụ: checkout_id, order_id)
+        description: "Khóa chính định danh một lượt order thành công."
+        tests:
+          - unique
+          - null_check
+          
+      - name: ip
+        description: "Địa chỉ IP của người dùng khi thực hiện giao dịch."
+        tests:
+          - null_check # Đảm bảo giao dịch nào cũng có IP để JOIN lấy địa lý

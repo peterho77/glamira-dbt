@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: glamira_raw
+    tables:
+      - name: checkout_success
+        description: "Bảng lưu trữ thông tin các đơn hàng checkout thành công"
+        identifier: summary_checkout_success
+      - name: ip2location
+        description: "Bảng lưu trữ thông tin địa lý của các địa chỉ IP"
+        identifier: ip2location
+        columns:
+          - name: ip
+            tests:
+              - unique
+              - null_check # IP là khóa chính, không thể null
+              
+          - name: country_code
+            tests:
+              - null_check
+              
+          - name: country_name
+            tests:
+              - null_check
