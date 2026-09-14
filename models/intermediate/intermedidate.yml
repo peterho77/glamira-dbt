@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_checkout_cart_items
+    description: "Bảng dữ liệu phẳng bóc tách chi tiết từng sản phẩm trong giỏ hàng."
+    columns:
+      - name: order_id
+        description: "Khóa ngoại liên kết về bảng order staging."
+        tests:
+          - null_check
+          
+      - name: product_id
+        description: "Mã sản phẩm (Bắt buộc phải có để map với bảng Dim)."
+        tests:
+          - null_check
+          
+      - name: price
+        description: "Giá của sản phẩm, không được phép âm."
+        tests:
+          - null_check
+          - non_negative_value # Gọi macro test vừa tạo
+
+      - name: amount
+        description: "Số lượng sản phẩm mua."
+        tests:
+          - null_check
+          - non_negative_value # Tái sử dụng test này cho cột số lượng

@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: "Bảng Dimension lưu trữ thông tin duy nhất của từng sản phẩm."
+    columns:
+      - name: product_id
+        description: "Khóa chính của bảng sản phẩm."
+        tests:
+          - unique      # Bắt buộc: Đảm bảo GROUP BY hoạt động đúng, mỗi ID chỉ có 1 dòng
+          - null_check  # Bắt buộc: ID không được rỗng
+          
+      - name: flag_current
+        description: "Cờ trạng thái SCD Type 2."
+        tests:
+          - null_check
+          
+      - name: active_from
+        description: "Ngày bắt đầu hiệu lực của record."
+        tests:
+          - null_check
