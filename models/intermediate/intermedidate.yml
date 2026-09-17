@@ -24,4 +24,12 @@ models:
         description: "Số lượng sản phẩm mua."
         tests:
           - null_check
-          - non_negative_value # Tái sử dụng test này cho cột số lượng
+          - non_negative_value # Tái sử dụng test này cho cột số lượng4
+
+  - name: int_customer_history
+    description: "Bảng xử lý logic SCD Type 2 cho hành trình khách hàng."
+    columns:
+      - name: active_from
+        description: "Mốc thời gian bắt đầu trạng thái."
+        tests:
+          - null_check

@@ -19,3 +19,22 @@ models:
         description: "Ngày bắt đầu hiệu lực của record."
         tests:
           - null_check
+
+  - name: dim_customer
+    description: "Từ điển khách hàng (SCD Type 2)."
+    columns:
+      - name: customer_id
+        description: "Surrogate Key băm từ Natural Key và active_from."
+        tests:
+          - unique
+          - null_check
+
+      - name: customer_nk
+        description: "Natural Key định danh khách hàng xuyên suốt các trạng thái."
+        tests:
+          - null_check
+
+      - name: flag_current
+        description: "Cờ đánh dấu trạng thái hiện tại (TRUE/FALSE)."
+        tests:
+          - null_check
